@@ -1,5 +1,6 @@
 package observer.user
 
+import observer.log.AccountChange.{MailChange, NameChange, ProfilePictureChange}
 import observer.log.{Entity, EntityChange, Loggable}
 import observer.user.Account.validateMail
 
@@ -20,18 +21,21 @@ class Account(
   def profilePicture: Option[URI] = _profilePicture
 
   def name_=(name: String): Unit = _name = name
+    notifyObserver(this, NameChange(name))
 
   def updateMail(mail: String): Boolean =
     if (validateMail(mail))
       _mail = Some(mail)
+      notifyObserver(this, MailChange(mail))
       true
     else
       false
 
   def updateProfilePicture(uri: URI): Unit = _profilePicture = Some(uri)
+    notifyObserver(this,ProfilePictureChange(profilePicture))
 
   def resetProfilePicture(): Unit = _profilePicture = None
-
+    notifyObserver(this, ProfilePictureChange(None))
   override def identifier: String = _displayName
 
 object Account:

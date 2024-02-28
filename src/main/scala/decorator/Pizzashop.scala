@@ -16,9 +16,9 @@ class Verdura extends Margherita:
 
 @main def Pizzashop(): Unit =
     // pizza Verdura with extra cheese
-    val p1: Pizza = ???
+    val p1: Pizza = withExtraCheese(Verdura())
     // pizza Funghi family size with vegan cheese
-    val p2: Pizza = ???
+    val p2: Pizza = FamilyPizza(Funghi())
 
     println(s"Price of a pizza verdura with extra cheese is ${p1.price}")
 

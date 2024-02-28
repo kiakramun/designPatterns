@@ -26,8 +26,19 @@ class Verdura extends Margherita:
     
 
 // === ADD YOUR CODE BELOW ===
+class withExtraCheese(pizza: Pizza) extends Pizza:
+    override def diameter: Int = pizza.diameter
+    override def price: BigDecimal = pizza.price + 2
 
+class withVeganCheese(pizza: Pizza) extends Pizza:
+    override def diameter: Int = pizza.diameter
+    override def price: BigDecimal = pizza.price + 1.5
 
+class withExtraOnion(pizza: Pizza) extends Pizza:
+    override def diameter: Int = pizza.diameter
+    override def price: BigDecimal = pizza.price + 1
 
-
+class FamilyPizza(pizza: Pizza) extends Pizza:
+    override def diameter: Int = 42
+    override def price: BigDecimal = pizza.price * 2
 // === ADD YOUR CODE ABOVE ===
